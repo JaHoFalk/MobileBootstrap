@@ -1,0 +1,16 @@
+[{
+        "neoid": 840,
+        "title": "Meeting MEETING D6",
+        "description": "",
+        "starttime": 1384348707053,
+        "endtime": 1384354107053,
+        "relationtypesAsString": "CREATES_MEETING,IS_ASSIGNED_TO_MEETING,"
+    }, {
+        "neoid": 43,
+        "title": "Meeting MEETING K1",
+        "description": "",
+        "starttime": 1384194691524,
+        "endtime": 1384200991524,
+        "relationtypesAsString": "IS_ASSIGNED_TO_MEETING,IS_MINUTEKEEPER,"
+    }
+]

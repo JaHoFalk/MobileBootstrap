@@ -1,0 +1,15 @@
+{{#each menu}}
+{{#if this.submenu}}
+<li>
+    <a href="#" >{{this.title}}<b class="caret"></b></a>
+    <ul >
+        {{#each submenu}}
+        <li id="{{this.menuItem}}"><a href="#{{this.route}}">{{this.title}}</a></li>
+        {{/each}}
+    </ul>
+</li>
+{{else}}
+<li id="{{this.menuItem}}"><a href="#{{this.route}}">{{this.title}}</a></li>
+{{/if}}
+
+{{/each}}

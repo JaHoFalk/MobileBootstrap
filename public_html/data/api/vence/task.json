@@ -1,0 +1,26 @@
+[{
+		"neoid" : 850,
+		"title" : "Minute Meeting 101",
+		"description" : "",
+		"dueDate" : 1384799491524,
+		"relationtypesAsString" : "IS_RESPONSIBLE,"
+	}, {
+		"neoid" : 853,
+		"title" : "Minute Agenda 0",
+		"description" : "",
+		"dueDate" : 1384799491524,
+		"relationtypesAsString" : "IS_RESPONSIBLE,"
+	}, {
+		"neoid" : 852,
+		"title" : "Minute Agenda 1",
+		"description" : "",
+		"dueDate" : 1384799491524,
+		"relationtypesAsString" : "IS_RESPONSIBLE,"
+	}, {
+		"neoid" : 851,
+		"title" : "Minute Meeting 100",
+		"description" : "",
+		"dueDate" : 1384799491524,
+		"relationtypesAsString" : "IS_RESPONSIBLE,"
+	}
+]

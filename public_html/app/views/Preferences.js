@@ -12,7 +12,6 @@ define(function(require) {
     var oldPasswordHash;
     return Backbone.View.extend({
         initialize: function(options) {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Preferences INIT");
             this.options = options || {};
             this.undelegateEvents();
 

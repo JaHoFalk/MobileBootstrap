@@ -23,15 +23,23 @@ define(function(require) {
                 submenu: [
                     {'title': 'Welcone', 'route': 'welcome', 'menuItem': 'welcome'},
                 ]},
-            {'title': 'Components', 'route': 'components', 'menuItem': 'components'},
+            {'title': 'Bootstrap 3', 'route': '', 'menuItem': '',
+                submenu: [
+                    {'title': 'Components', 'route': 'bootcomp', 'menuItem': 'bootcomp'},
+                    {'title': 'Javascripted', 'route': 'bootjs', 'menuItem': 'bootjs'}
+                ]},
             {'title': 'Einstellungen', 'route': 'preferences', 'menuItem': 'preferences'}]};
 
     var protectedMenu = {'menu': [
-            {'title': 'Protected', 'route': '', 'menuItem': 'protected',
+            {'title': 'Main', 'route': '', 'menuItem': 'protected',
                 submenu: [
                     {'title': 'Sitzung', 'route': 'meeting', 'menuItem': 'meeting'},
                     {'title': 'Aufgaben', 'route': 'task', 'menuItem': 'task'}]},
-            {'title': 'Components', 'route': 'components', 'menuItem': 'components'},
+            {'title': 'Bootstrap 3', 'route': '', 'menuItem': '',
+                submenu: [
+                    {'title': 'Components', 'route': 'bootcomp', 'menuItem': 'bootcomp'},
+                    {'title': 'Javascripted', 'route': 'bootjs', 'menuItem': 'bootjs'}
+                ]},
             {'title': 'Einstellungen', 'route': 'preferences', 'menuItem': 'preferences'}]};
 
     return Backbone.Router.extend({
@@ -53,7 +61,8 @@ define(function(require) {
             '': 'home',
             'task': 'task',
             'meeting': 'meeting',
-            'components': 'components',
+            'bootcomp': 'templateview',
+            'bootjs': 'templateview',
             'preferences': 'preferences',
             '*path': 'home'
         },
@@ -65,10 +74,11 @@ define(function(require) {
             shellView.setMenu(this.menu);
             shellView.selectMenuItem();
         },
-        components: function() {
+        templateview: function() {
             shellView.setMenu(this.menu);
-            var view = new ComponentsView({el: shellView.getContentElement()});
-            shellView.selectMenuItem('special');
+            var view = new ComponentsView(
+                    {el: shellView.getContentElement(), templateName: Backbone.history.fragment});
+            shellView.selectMenuItem(Backbone.history.fragment);
         },
         preferences: function() {
             shellView.setMenu(this.menu);

@@ -21,7 +21,7 @@ define(function(require) {
     var publicMenu = {'menu': [
             {'title': 'Public', 'route': '', 'menuItem': 'public',
                 submenu: [
-                    {'title': 'Welcone', 'route': 'welcome', 'menuItem': 'welcome'},
+                    {'title': 'Welcome', 'route': 'welcome', 'menuItem': 'welcome'},
                 ]},
             {'title': 'Bootstrap 3', 'route': '', 'menuItem': '',
                 submenu: [

@@ -7,6 +7,8 @@ define(function(require) {
     var template = require('hbs!ui/Preferences');
     var CryptoJS = require("cryptojs_sha512");
     var User = require('app/models/User');
+    var BaseModalView = require('views/ui/BaseModalView');
+    var AreYouShure = require('views/ui/AreYouShure');
 
     var passwordWasChanged = false;
     var oldPasswordHash;
@@ -14,7 +16,6 @@ define(function(require) {
         initialize: function(options) {
             this.options = options || {};
             this.undelegateEvents();
-
             this.render();
         },
         events: {
@@ -27,15 +28,15 @@ define(function(require) {
             console.log("Preferences CLEAR PASSWORD FIELD");
             passwordWasChanged = true;
             $('#password')
-                    .val('');
+                .val('');
         },
         authenticate: function() {
             console.log("Preferences AUTHENTICATE");
 
             var username = this.$el.find("#username")
-                    .val();
+                .val();
             var password = this.$el.find("#password")
-                    .val();
+                .val();
             if (username && password) {
                 var usernameHash = CryptoJS.SHA512(username + username[0]);
                 var passwordHash = oldPasswordHash;
@@ -51,9 +52,9 @@ define(function(require) {
                 user.credentials = {
                     usernameClear: username,
                     username: usernameHash.toString(CryptoJS.enc.Hex)
-                            .toUpperCase(),
+                        .toUpperCase(),
                     password: passwordHash.toString(CryptoJS.enc.Hex)
-                            .toUpperCase(),
+                        .toUpperCase(),
                     l: password.length
                 };
                 // clear users input
@@ -74,20 +75,29 @@ define(function(require) {
                         // message and reset
                         self.options.callback(false);
                         // localStorage.setItem(Constants.LOCAL_STORAGE_KEY, JSON.stringify(user.credentials));
-                        alert("Not authenticated");
+                        var modalView = new BaseModalView(
+                            {title: 'Fehler', description: 'Die Authorisierung war nicht erfolgreich.'});
+                        modalView.show();
                         self.render();
                     }
                 });
             } else {
-                alert("Check input");
+                var modalView = new BaseModalView(
+                    {title: 'Fehler', description: 'Bitte überprüfen sie ihre Eingaben.'});
+                modalView.show();
             }
         },
         clearUserCredentials: function() {
-            console.log("Preferences CLEARUSERCREDENTIALS");
-
-            localStorage.removeItem(Constants.LOCAL_STORAGE_KEY);
-            this.options.callback(false);
-            this.render();
+            var self = this;
+            var modalView = new AreYouShure(
+                {description: 'Die lokalen Anmeldedaten werden unwiderruflich gelöscht.', callback: function() {
+                        console.log("Preferences CLEARUSERCREDENTIALS");
+                        localStorage.removeItem(Constants.LOCAL_STORAGE_KEY);
+                        self.options.callback(false);
+                        self.render();
+                    }
+                });
+            modalView.show();
         },
         render: function() {
             console.log("Preferences RENDER");

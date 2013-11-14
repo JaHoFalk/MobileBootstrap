@@ -5,6 +5,7 @@ define(function(require) {
     var Backbone = require('backbone');
     var componentTemplate = require('hbs!ui/Components');
     var bootjsTemplate = require('hbs!ui/Javascript');
+    var $ = require('jquery');
 
     return Backbone.View.extend({
         initialize: function(options) {
@@ -17,6 +18,8 @@ define(function(require) {
                 this.$el.html(componentTemplate({title: 'Home'}));
             } else if (this.options.templateName === 'bootjs') {
                 this.$el.html(bootjsTemplate({title: 'Home'}));
+                $("#popover").popover();
+                $("a").tooltip();
             }
             return this;
         }

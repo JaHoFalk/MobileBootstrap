@@ -33,7 +33,7 @@ define(function(require) {
     var protectedMenu = {'menu': [
             {'title': 'Main', 'route': '', 'menuItem': 'protected',
                 submenu: [
-                    {'title': 'Test', 'route': 'meeting', 'menuItem': 'meeting'},
+                    {'title': 'Sitzung', 'route': 'meeting', 'menuItem': 'meeting'},
                     {'title': 'Aufgaben', 'route': 'task', 'menuItem': 'task'}]},
             {'title': 'Bootstrap 3', 'route': '', 'menuItem': '',
                 submenu: [
